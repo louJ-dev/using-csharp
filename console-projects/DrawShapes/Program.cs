@@ -1,21 +1,7 @@
-﻿using System.Runtime.InteropServices;
-using DrawShapes;
+﻿using DrawShapes;
 
 public class Program{
-
-    // dont have any idea how this works... just copy pasted it
-    // from: https://learn.microsoft.com/en-us/answers/questions/1630444/how-to-make-a-console-application-fullscreen-in-c
-    [DllImport("kernel32.dll", ExactSpelling = true)]
-    private static extern IntPtr GetConsoleWindow();
-    [DllImport("user32.dll")]
-    private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-    private const int SW_MAXIMIZE = 3;
-
     static void Main(){
-        // part of the thing above...
-        IntPtr handle = GetConsoleWindow();
-        ShowWindow(handle, SW_MAXIMIZE);
-
         Console.Clear();
         try{
             // tries to force maximize window...
@@ -44,9 +30,6 @@ public class Program{
                 }
             }
         }
-
-        Console.Clear();
-        Console.SetCursorPosition(0, 0);
 
         const int menu_width = 39;
         const ConsoleColor colorBorder = ConsoleColor.DarkGray;
@@ -80,22 +63,14 @@ public class Program{
         // Create Menu
         int index = 0; 
         while(true){
-            // ***NOTE***
-            // [... + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));]
-            // all this trailing code some write frunctions is use to clear the board...
-            // this needs to be fixed... I couldn't think of another way...
-            // my previous attempts gives flickering effect... 
-
-
-            Console.SetCursorPosition(0, 0);
-            // Console.Clear();
+            Console.Clear();
             Console.ResetColor();
             
             // draw top border...
             Console.ForegroundColor = colorBorder;
-            Console.WriteLine('\u250C' + TextLimiter(string.Empty, Console.WindowWidth - 3, '\u2500') + '\u2510');
-            Console.WriteLine('\u2502' + TextLimiter(string.Empty, Console.WindowWidth - 3)+ '\u2502');
-            Console.WriteLine('\u251C' + TextLimiter(string.Empty, menu_width, '\u2500') + TextLimiter("\u252C", (Console.WindowWidth - menu_width) - 3, '\u2500') + '\u2518');
+            Console.WriteLine('\u250C' + TextLimiter(string.Empty, Console.BufferWidth - 2, '\u2500') + '\u2510');
+            Console.WriteLine('\u2502' + TextLimiter(string.Empty, Console.BufferWidth - 2)+ '\u2502');
+            Console.WriteLine('\u251C' + TextLimiter(string.Empty, menu_width, '\u2500') + TextLimiter("\u252C", (Console.BufferWidth - menu_width) - 2, '\u2500') + '\u2518');
             
             // put top info...
             Console.SetCursorPosition(1, 1);
@@ -118,14 +93,14 @@ public class Program{
                 Console.Write(TextLimiter(line + nameShapes[i], menu_width));
             
                 Console.ForegroundColor = colorBorder; 
-                Console.WriteLine('\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
+                Console.WriteLine('\u2502');
             }
              
             // draw character list border...
-            Console.WriteLine('\u251C' + TextLimiter(string.Empty, menu_width, '\u2500') + '\u2524' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
+            Console.WriteLine('\u251C' + TextLimiter(string.Empty, menu_width, '\u2500') + '\u2524');
             int top = Console.CursorTop;
             for(int y = 0; y < graphics.GetLength(0); y++){
-                Console.WriteLine('\u2502' + TextLimiter(string.Empty, menu_width, ' ') + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
+                Console.WriteLine('\u2502' + TextLimiter(string.Empty, menu_width, ' ') + '\u2502');
             }
 
             Console.SetCursorPosition(1, top);
@@ -150,16 +125,16 @@ public class Program{
 
             // show instructions...
             Console.ForegroundColor = colorBorder;
-            Console.WriteLine('\u251C' + TextLimiter(string.Empty, menu_width, '\u2500') + '\u2524' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" UP ARROW     - move pointer up", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" DOWN ARROW   - move pointer down", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" LEFT ARROW   - decrease shape size", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" RIGHT ARROW  - increase shape size", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" W A S D      - move graphicA selector", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" I J K L      - move graphicB selector", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" Q E          - change draw delay", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2502' + TextLimiter(" ENTER        - exit", menu_width) + '\u2502' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
-            Console.WriteLine('\u2514' + TextLimiter(string.Empty, menu_width, '\u2500') + '\u2518' + TextLimiter(string.Empty, Console.WindowWidth - (menu_width + 3)));
+            Console.WriteLine('\u251C' + TextLimiter(string.Empty, menu_width, '\u2500') + '\u2524');
+            Console.WriteLine('\u2502' + TextLimiter(" UP ARROW     - move pointer up", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" DOWN ARROW   - move pointer down", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" LEFT ARROW   - decrease shape size", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" RIGHT ARROW  - increase shape size", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" W A S D      - move graphicA selector", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" I J K L      - move graphicB selector", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" Q E          - change draw delay", menu_width) + '\u2502');
+            Console.WriteLine('\u2502' + TextLimiter(" ENTER        - exit", menu_width) + '\u2502');
+            Console.WriteLine('\u2514' + TextLimiter(string.Empty, menu_width, '\u2500') + '\u2518'); 
 
             // set shape settings...
             Shapes.graphicA = graphics[indexGraphicA.y, indexGraphicA.x];
@@ -175,7 +150,7 @@ public class Program{
 
             // cancel current draw...
             source.Cancel();
-            
+             
             // move menu pointer..
             if(input.Key == ConsoleKey.UpArrow){
                 index--;
@@ -197,7 +172,7 @@ public class Program{
             if(input.Key == ConsoleKey.RightArrow){
                 baseSize++;
 
-                int maxSize = Console.WindowHeight - 4; // - (menu_width + 4); 
+                int maxSize = Console.BufferWidth - (menu_width + 4); 
                 if(baseSize > maxSize){
                     baseSize = maxSize;
                 }
@@ -268,7 +243,7 @@ public class Program{
         }
         
         // move cursor to bottom of window...
-        Console.SetCursorPosition(0, Console.WindowHeight - 2);
+        Console.SetCursorPosition(0, Console.BufferHeight - 2);
         Console.WriteLine("END");
     }
 
