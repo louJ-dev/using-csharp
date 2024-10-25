@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/lou/projects/using-csharp/console-projects/DrawShapes/DrawShapes.csproj": {}
+    "C:\\Users\\jeric\\OneDrive\\Documents\\projects\\using-csharp\\console-projects\\DrawShapes\\DrawShapes.csproj": {}
   },
   "projects": {
-    "/home/lou/projects/using-csharp/console-projects/DrawShapes/DrawShapes.csproj": {
+    "C:\\Users\\jeric\\OneDrive\\Documents\\projects\\using-csharp\\console-projects\\DrawShapes\\DrawShapes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/lou/projects/using-csharp/console-projects/DrawShapes/DrawShapes.csproj",
+        "projectUniqueName": "C:\\Users\\jeric\\OneDrive\\Documents\\projects\\using-csharp\\console-projects\\DrawShapes\\DrawShapes.csproj",
         "projectName": "DrawShapes",
-        "projectPath": "/home/lou/projects/using-csharp/console-projects/DrawShapes/DrawShapes.csproj",
-        "packagesPath": "/home/lou/.nuget/packages/",
-        "outputPath": "/home/lou/projects/using-csharp/console-projects/DrawShapes/obj/",
+        "projectPath": "C:\\Users\\jeric\\OneDrive\\Documents\\projects\\using-csharp\\console-projects\\DrawShapes\\DrawShapes.csproj",
+        "packagesPath": "C:\\Users\\jeric\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeric\\OneDrive\\Documents\\projects\\using-csharp\\console-projects\\DrawShapes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/lou/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\jeric\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

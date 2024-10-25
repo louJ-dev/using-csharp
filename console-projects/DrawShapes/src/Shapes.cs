@@ -15,7 +15,7 @@ public static class Shapes{
         graphicA = '*';
         graphicB = '_';
         enableColorChange = false;
-        drawDelay = 100;
+        drawDelay = 50;
 
         indexColor = 0;
 
