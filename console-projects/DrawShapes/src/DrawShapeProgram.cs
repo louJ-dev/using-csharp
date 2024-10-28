@@ -31,17 +31,19 @@ public class DrawShapeProgram{
 
     }
 
-    private int baseSize = 7;
-    private int indexShapeList = 0;
-    private (int x, int y) indexGraphicA = (16, 3);
-    private (int x, int y) indexGraphicB = (2, 4);
+    private int baseSize;
+    private int maxSize;
+    private int indexShapeList;
+    private (int x, int y) indexGraphicA;
+    private (int x, int y) indexGraphicB;
 
-    private Stopwatch inputTimer = new Stopwatch();
-    private ConsoleKeyInfo prevInput = new ConsoleKeyInfo();
-    private CancellationTokenSource source = new CancellationTokenSource();
+    private Stopwatch inputTimer;
+    private ConsoleKeyInfo prevInput;
+    private CancellationTokenSource source;
 
     public DrawShapeProgram(){
          baseSize = 7;
+         maxSize = Console.WindowWidth - 4;
          indexShapeList = 0;
          indexGraphicA = (16, 3);
          indexGraphicB = (2, 4);
@@ -85,6 +87,21 @@ public class DrawShapeProgram{
                 Console.WriteLine(cleaner);
             }
 #endregion
+            // determine max size
+            if(indexShapeList == 0 || indexShapeList == 1){
+                maxSize = Console.WindowWidth - (menu_width + 4);
+            }else if(indexShapeList >= 8 && indexShapeList <= 15){
+                maxSize = Console.WindowHeight - 4;
+            }else{
+                maxSize = Console.WindowHeight - 4;
+            }
+
+            // clamp baseSize
+            if(baseSize <= 3){
+                baseSize = 3;
+            }else if(baseSize >= maxSize){
+                baseSize = maxSize;
+            }
 
             // set shape settings...
             Shapes.graphicA = graphics[indexGraphicA.y, indexGraphicA.x];
@@ -135,17 +152,10 @@ public class DrawShapeProgram{
                                 }
                                 break;
                             case ConsoleKey.RightArrow: // increase shape size
-                                baseSize++;
-                                int maxSize = Console.WindowHeight - 4; // set max shape size
-                                if(baseSize > maxSize){
-                                    baseSize = maxSize;
-                                }
+                                baseSize++;                                
                                 break;
                             case ConsoleKey.LeftArrow: // decrease shape size
                                 baseSize--;
-                                if(baseSize < 3){
-                                    baseSize = 3; // min size
-                                }
                                 break;
                             case ConsoleKey.W: // move graphics-A_selector up
                                 indexGraphicA.y--;

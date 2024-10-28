@@ -97,10 +97,7 @@ public static class Shapes{
 	    } 
     }
 
-	public static async void DrawSquare(int b, CancellationToken cToken, int posX = 0, int posY = 0){
-        // make proportion to others...
-        b /= 2;
-        
+	public static async void DrawSquare(int b, CancellationToken cToken, int posX = 0, int posY = 0){ 
         for(int y = 1; y <= b; y++){
 	        string line = string.Empty;
             for (int x = 0; x < b; x++){
